@@ -12,6 +12,7 @@ def display_node(linked_list):
 
 
 linkedlist = LinkedList()
+linkedlist1 = LinkedList()
 
 print('\nAppend 36 to our Linked List')
 linkedlist.append(36)
@@ -38,7 +39,13 @@ pop = linkedlist.pop(3)
 print('Pop: ' + str(pop))
 display_node(linkedlist)
 
+print('\nConvert Iterable [1, 2, 3, 4, 5] into a Linked List')
+linkedlist.convert([1, 2, 3, 4, 5])
+display_node(linkedlist)
+
 print('\nClear our Linked List')
 linkedlist.clear()
 display_node(linkedlist)
+
+
    

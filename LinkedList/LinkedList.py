@@ -71,7 +71,7 @@ class LinkedList:
             
         current.prev = new_node                       
     
-    def insert_iter(self, index, iterable):
+    def insert_iter(self, index, iterable: iter):
         """Insert an Iterable as a seperate element"""
         if index < 0:
             raise ValueError("Index must be >= 0")
@@ -190,23 +190,29 @@ class LinkedList:
         return current.value
         
     def clear(self):
-        """ Clears all the element from the Linked List"""
-        
-        current = self.head
-        while current:
-              
-            nxt = current.next
-            current.next = None
-            current.prev = None
-            current = nxt
-        
+        """ Clears all the element from the Linked List"""              
         self.head = None
         self.tail = None    
-            
-
-            
+    
+    def convert(self, iterable: iter):
+        """Converts Iterables into a linked list"""
         
-                     
+        if isinstance(iterable, dict):
+            iterable = iterable.items()
+        
+        i = 0    
+        for element in iterable:
+            # creating first element
+            new_node = Node(element)
+            
+            if i == 0:
+                self.head = self.tail = new_node
+                
+            else:
+                self.tail.next = new_node
+                new_node.prev = self.tail
+                self.tail = new_node                           
+            i += 1         
             
         
             
