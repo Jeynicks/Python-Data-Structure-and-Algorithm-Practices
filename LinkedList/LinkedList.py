@@ -197,22 +197,23 @@ class LinkedList:
     def convert(self, iterable: iter):
         """Converts Iterables into a linked list"""
         
+        self.clear()
         if isinstance(iterable, dict):
             iterable = iterable.items()
-        
-        i = 0    
+                  
         for element in iterable:
-            # creating first element
+            
             new_node = Node(element)
             
-            if i == 0:
+            # creating first element
+            if not self.head:
                 self.head = self.tail = new_node
-                
+            
+            # appending new nodes to the new linkedlist    
             else:
                 self.tail.next = new_node
                 new_node.prev = self.tail
-                self.tail = new_node                           
-            i += 1         
+                self.tail = new_node                                   
             
         
             
