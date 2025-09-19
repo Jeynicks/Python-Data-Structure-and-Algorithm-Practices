@@ -7,6 +7,14 @@ class LinkedList:
         self.head = None
         self.tail = None
     
+    def __iter__(self):
+        """Make our linked list iterable"""
+        current = self.head
+        
+        while current:
+            yield current.value
+            current = current.next
+    
     def append(self, value):
         """Append Value to the end of the Linked List"""
         new_node = Node(value)
@@ -215,6 +223,37 @@ class LinkedList:
                 new_node.prev = self.tail
                 self.tail = new_node                                   
             
+    def length(self):
+        """returns the length of the linked list"""
+        if self.head is None:
+            raise IndexError('Linked List is empty')
         
+        count = 0
+        current = self.head
+        while current:
+            count += 1
+            current = current.next    
+        
+        return count    
+    
+    def merge(self, linked_list):
+        """Merge another Linked List"""
+        current = linked_list.head
+        while current:
+            self.append(current.value)
+            current = current.next
             
+    def copy(self):
+        """Returns a copy of the linked list"""
         
+        if self.head is None:
+            return LinkedList()
+        
+        new_list = LinkedList()
+        current = self.head
+        
+        while current:
+            new_list.append(current.value)
+            current = current.next        
+        
+        return new_list          

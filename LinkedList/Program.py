@@ -13,6 +13,7 @@ def display_node(linked_list):
 
 linkedlist = LinkedList()
 linkedlist1 = LinkedList()
+linkedlist2 = LinkedList()
 
 print('\nAppend 36 to our Linked List')
 linkedlist.append(36)
@@ -39,13 +40,24 @@ pop = linkedlist.pop(3)
 print('Pop: ' + str(pop))
 display_node(linkedlist)
 
-print('\nConvert Iterable [1, 2, 3, 4, 5] into a Linked List')
-linkedlist.convert([1, 2, 3, 4, 5])
-display_node(linkedlist)
+print('\nLength of our Linked List')
+print(linkedlist.length())
 
-print('\nClear our Linked List')
-linkedlist.clear()
-display_node(linkedlist)
+print('\nConvert Iterable [1, 2, 3, 4, 5] into a Linked List1')
+linkedlist1.convert([1, 2, 3, 4, 5])
+display_node(linkedlist1)
+
+print('\nMerge our Linked List1 to Linked List')
+linkedlist.merge(linkedlist1)
+display_node(linkedlist)    
+
+print('\nCopy our Linked List to Linked List 2')
+linkedlist2 = linkedlist.copy()
+display_node(linkedlist2)
+ 
+print('\nLinked List 2 as Iterable')    
+for linked_list in linkedlist2:
+    print(f"{linked_list}, ", end=" ")
 
 
    
