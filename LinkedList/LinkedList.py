@@ -15,6 +15,19 @@ class LinkedList:
             yield current.value
             current = current.next
     
+    def __getitem__(self, index):
+        """Enable bracket access: ll[index]"""
+        return self.get(index)
+
+    def __setitem__(self, index, value):
+        """Enable bracket assignment: ll[index] = value"""
+        self.set(index, value)
+
+    def __len__(self):
+        """Enable len()"""
+        return self.length()
+
+                        
     def append(self, value):
         """Append Value to the end of the Linked List"""
         new_node = Node(value)
@@ -95,6 +108,7 @@ class LinkedList:
                     self.head.prev = new_node
                 else:
                     self.tail = new_node
+                    
                 self.head = new_node
             return
 
@@ -203,7 +217,7 @@ class LinkedList:
         self.tail = None    
     
     def convert(self, iterable: iter):
-        """Converts Iterables into a linked list"""
+        """Converts Iterables into a new linked list"""
         
         self.clear()
         if isinstance(iterable, dict):
@@ -256,4 +270,64 @@ class LinkedList:
             new_list.append(current.value)
             current = current.next        
         
-        return new_list          
+        return new_list
+    
+    def find(self, target):
+        """Get index of the target"""
+        index = 0
+        current = self.head
+        
+        while current:               
+            if target == current.value:
+                return index
+            
+            index += 1
+            current = current.next          
+        
+        return None    
+    
+    def get(self, index):
+        """Get the value of the index"""
+        
+        if not isinstance(index, int):
+            raise TypeError('Index should be an integer')
+        
+        if index < 0:
+            raise ValueError('Index should be >= 0')
+        
+        current = self.head
+        i = 0
+        
+        while current: 
+            
+            if current is None:
+               raise IndexError('Index out of range')
+    
+            if i == index:
+                return current.value
+            
+            current = current.next
+            i += 1
+
+    def set(self, index, value):
+        """Set/Update value of the index"""
+        
+        if not isinstance(index, int):
+            raise TypeError('Index should be an integer')
+        
+        if index < 0:
+            raise ValueError('Index should be >= 0')
+        
+        current = self.head
+        i = 0
+        
+        while current: 
+            
+            if current is None:
+               raise IndexError('Index out of range')
+    
+            if i == index:
+                current.value = value
+            
+            current = current.next
+            i += 1                        
